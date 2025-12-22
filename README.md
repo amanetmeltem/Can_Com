@@ -1,4 +1,4 @@
-# Can_Com
+
 # STM32 & Arduino CAN Bus Communication Project
 
 Bu proje, **STM32F407** mikrodenetleyicisi ile **Arduino Uno** arasında **CAN Bus (Controller Area Network)** protokolü kullanılarak güvenilir bir veri iletişimi sağlamayı amaçlamaktadır. Sistem, STM32 tarafındaki bir sensörden (ADXL345) alınan verileri okur, CAN hattı üzerinden paketler ve Arduino tarafındaki LCD ekranda görüntüler.
