@@ -28,27 +28,6 @@ Bu projeyi gerçekleştirmek için aşağıdaki donanımlara ihtiyacınız vard�
     * Breadboard
 
 ## 🔌 Bağlantı Şeması (Pinout)
-
-### 1. STM32F407 Bağlantıları
-| STM32 Pin | Modül | Açıklama |
-| :--- | :--- | :--- |
-| **PB8** | CAN Tx Modülü | CAN_RX (Alternatif Pin) |
-| **PB9** | CAN Tx Modülü | CAN_TX (Alternatif Pin) |
-| **PB6** | ADXL345 | I2C1_SCL |
-| **PB7** | ADXL345 | I2C1_SDA |
-| **5V / GND** | Modüller | Güç Beslemesi |
-
-### 2. Arduino Uno Bağlantıları (MCP2515 & LCD)
-| Arduino Pin | Modül | Fonksiyon |
-| :--- | :--- | :--- |
-| **D10** | MCP2515 | CS (Chip Select) |
-| **D11** | MCP2515 | MOSI |
-| **D12** | MCP2515 | MISO |
-| **D13** | MCP2515 | SCK |
-| **D2** | LCD | RS |
-| **D3** | LCD | E (Enable) |
-| **D4-D7** | LCD | Data Yolları (4-bit mod) |
-
 *Not: İki CAN modülü arasındaki **CAN_H** ve **CAN_L** uçları birbirine, **GND** hatları ise ortak toprağa bağlanmalıdır.*
 <img width="3603" height="1572" alt="project wiring diagram" src="https://github.com/user-attachments/assets/a41d413f-3a18-4369-99ce-dd5e2dc45d30" />
 
