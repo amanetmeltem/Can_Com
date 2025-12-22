@@ -50,6 +50,7 @@ Bu projeyi gerçekleştirmek için aşağıdaki donanımlara ihtiyacınız vard�
 | **D4-D7** | LCD | Data Yolları (4-bit mod) |
 
 *Not: İki CAN modülü arasındaki **CAN_H** ve **CAN_L** uçları birbirine, **GND** hatları ise ortak toprağa bağlanmalıdır.*
+<img width="3603" height="1572" alt="project wiring diagram" src="https://github.com/user-attachments/assets/a41d413f-3a18-4369-99ce-dd5e2dc45d30" />
 
 ## 💻 Yazılım ve Kütüphaneler
 
