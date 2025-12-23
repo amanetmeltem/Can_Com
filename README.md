@@ -1,57 +1,53 @@
-
 # STM32 & Arduino CAN Bus Communication Project
 
-Bu proje, **STM32F407** mikrodenetleyicisi ile **Arduino Uno** arasında **CAN Bus (Controller Area Network)** protokolü kullanılarak güvenilir bir veri iletişimi sağlamayı amaçlamaktadır. Sistem, STM32 tarafındaki bir sensörden (ADXL345) alınan verileri okur, CAN hattı üzerinden paketler ve Arduino tarafındaki LCD ekranda görüntüler.
+This project aims to establish reliable data communication between the **STM32F407** microcontroller and **Arduino Uno** using the **CAN Bus (Controller Area Network)** protocol. The system reads data from a sensor (ADXL345) on the STM32 side, packages it over the CAN line, and displays it on an LCD screen on the Arduino side.
 
+## 📋 Project Overview
 
-## 📋 Proje Özeti
+The project consists of two main nodes:
+1.  **Transmitter - STM32F4:** Reads data from a 3-axis accelerometer (ADXL345) and broadcasts this data via CAN Bus.
+2.  **Receiver - Arduino Uno:** Listens to the CAN Bus line, parses the incoming data packet, and presents the results to the user on a 16x2 LCD display.
 
-Proje iki ana düğümden (node) oluşmaktadır:
-1.  **Verici (Transmitter) - STM32F4:** 3 eksenli ivmeölçerden (ADXL345) veri okur ve bu veriyi CAN Bus üzerinden yayınlar.
-2.  **Alıcı (Receiver) - Arduino Uno:** CAN Bus hattını dinler, gelen veri paketini ayrıştırır ve sonuçları 16x2 LCD ekranda kullanıcıya sunar.
+## 🛠 Hardware Requirements
 
-## 🛠 Donanım Gereksinimleri
+To replicate this project, you will need the following hardware:
 
-Bu projeyi gerçekleştirmek için aşağıdaki donanımlara ihtiyacınız vardır:
-
-* **STM32 Tarafı:**
+* **STM32 Side:**
     * STM32F407G-DISC1 (Discovery Board)
-    * SN65HVD230 CAN Transceiver Modülü
-    * ADXL345 İvmeölçer Sensörü (I2C/SPI)
-* **Arduino Tarafı:**
+    * SN65HVD230 CAN Transceiver Module
+    * ADXL345 Accelerometer Sensor (I2C/SPI)
+* **Arduino Side:**
     * Arduino Uno R3
-    * MCP2515 CAN Bus Modülü (SPI Arayüzlü)
-    * 16x2 Karakter LCD Ekran
-    * 10k Potansiyometre (LCD kontrast ayarı için)
-* **Genel:**
-    * Jumper kablolar
+    * MCP2515 CAN Bus Module (SPI Interface)
+    * 16x2 Character LCD Display
+    * 10k Potentiometer (for LCD contrast adjustment)
+* **General:**
+    * Jumper wires
     * Breadboard
 
-## 🔌 Bağlantı Şeması (Pinout)
-*Not: İki CAN modülü arasındaki **CAN_H** ve **CAN_L** uçları birbirine, **GND** hatları ise ortak toprağa bağlanmalıdır.*
+## 🔌 Wiring Diagram (Pinout)
+*Note: The **CAN_H** and **CAN_L** pins between the two CAN modules must be connected together, and the **GND** lines must be connected to a common ground.*
 <img width="3603" height="1572" alt="project wiring diagram" src="https://github.com/user-attachments/assets/a41d413f-3a18-4369-99ce-dd5e2dc45d30" />
 
-## 💻 Yazılım ve Kütüphaneler
+## 💻 Software and Libraries
 
-### STM32 (Verici)
+### STM32 (Transmitter)
 * **IDE:** STM32CubeIDE 
 * **Framework:** HAL Library (Hardware Abstraction Layer)
-* **Ayarlar:**
-    * CAN1 aktif (Prescaler ve Time Quanta ayarları 500kbps veya 250kbps hıza göre yapılmalı).
-    * I2C1 aktif (ADXL345 okuması için).
+* **Configuration:**
+    * CAN1 active (Prescaler and Time Quanta settings should be configured for 500kbps or 250kbps).
+    * I2C1 active (for ADXL345 reading).
 
-### Arduino (Alıcı)
+### Arduino (Receiver)
 * **IDE:** Arduino IDE
-* **Kütüphaneler:**
-    * `mcp_can` (Cory J. Fowler) - MCP2515 kontrolü için.
-    * `LiquidCrystal` - LCD ekran kontrolü için.
+* **Libraries:**
+    * `mcp_can` (Cory J. Fowler) - For controlling the MCP2515.
+    * `LiquidCrystal` - For controlling the LCD display.
 
-## 🚀 Kurulum ve Kullanım
+## 🚀 Installation and Usage
 
-1.  **Bağlantıları Yapın:** Yukarıdaki şemaya ve tabloya göre devre bağlantılarını breadboard üzerinde kurun.
-2.  **STM32 Kodunu Yükleyin:** `CAN_COM` klasöründeki projeyi derleyin ve STM32F4 kartına flashlayın.
-3.  **Arduino Kodunu Yükleyin:** `can_com` klasöründeki `.ino` dosyasını Arduino IDE ile açın, gerekli kütüphaneleri indirin ve karta yükleyin.
-4.  **Sistemi Başlatın:** Her iki karta da güç verin.
-5.  **Test:** ADXL345 sensörünü hareket ettirdiğinizde, Arduino'ya bağlı LCD ekranda değişen değerleri görmelisiniz.
-
-
+1.  **Make Connections:** Assemble the circuit on the breadboard according to the diagram and table above.
+2.  **Upload STM32 Code:** Compile the project located in the `CAN_COM` folder and flash it to the STM32F4 board.
+3.  **Upload Arduino Code:** Open the `.ino` file in the `can_com` folder using the Arduino IDE, install the necessary libraries, and upload it to the board.
+4.  **Start the System:** Power up both boards.
+5.  **Test:** When you move the ADXL345 sensor, you should see the values changing on the LCD screen connected to the Arduino.
